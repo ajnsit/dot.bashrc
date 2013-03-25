@@ -183,9 +183,6 @@ alias port='sudo netstat -lpn | grep'
 # Less should accept color from commands
 alias less='less -R'
 
-# Grep command for searching should also always output color
-alias grep='grep --color=always -r'
-
 # Remove color codes (special characters) with sed
 alias nocolor='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
