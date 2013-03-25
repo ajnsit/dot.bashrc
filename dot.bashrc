@@ -406,7 +406,8 @@ function prompt_func() {
     else
         smiley="${RED}:|${COLOR_NONE} "
     fi
-    PS1="${smiley}${prompt}${COLOR_NONE}➔ "
+    next_line="\n${GREEN}\u${BLUE}@${GREEN}\h${BLUE}[${YELLOW}\j${BLUE}]${COLOR_NONE}➔ "
+    PS1="${smiley}${prompt}${COLOR_NONE}${next_line}"
 }
 
 PROMPT_COMMAND=prompt_func
