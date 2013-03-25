@@ -210,8 +210,15 @@ function updateGitRepos() {
   for i in `find . -name \.git | awk -F "/" '{print $2}'`; do
     echo "cd $i"
     cd $i
-    echo "git pull"
-    git pull
+    # Detect git svn repos and handle them differently
+    # http://stackoverflow.com/a/9086279/348716
+    if [ -d .git/svn ] && [ x != x"$(ls -A .git/svn/)" ] && echo Looks like a git svn repo; then
+      echo "git svn rebase"
+      git svn rebase
+    else
+      echo "git pull"
+      git pull
+    fi
     echo "cd .."
     cd ..
     echo "Done"
