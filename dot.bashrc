@@ -131,6 +131,14 @@ fi
 # Modified path
 export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 
+# Set a 256 color terminal
+# Needed for vim and tmux
+if [ -n "$TMUX" ]; then
+  # Tmux really, really, wants screen-256color
+  export TERM=screen-256color
+else
+  export TERM=xterm-256color
+fi
 
 
 ##################################
