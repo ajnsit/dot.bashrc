@@ -212,6 +212,10 @@ alias ack="ack --pager=\"less -R\""
 # See - http://blog.syntaxvssemantics.com/2010/08/wget-as-spidercrawler-recursively.html
 alias spider="wget -r -np -p -k"
 
+# Ack should always use a pager
+alias ack="ack-grep --pager=\"less -R\""
+
+
 
 ##############################
 ##==--~~ MY FUNCTIONS ~~--==##
@@ -293,6 +297,21 @@ function fayme() {
   fi
 
   unset noerror; unset hsfilename; unset jsfilename; unset tempfilename; unset dirname; unset extension; unset filename
+}
+
+# Replace strings across files
+# Internally uses perl -pi -e
+# Usage:
+#   searchReplace <search> <replacement> <files>
+function searchReplace() {
+  unset s; unset r; unset l;
+  if [ $# -gt 2 ]; then
+    s=$1
+    r=$2
+    l=$3
+    echo "perl -pi -e \"s/$s/$r/g\" $l"
+    perl -pi -e "s/$s/$r/g" $l
+  fi
 }
 
 
