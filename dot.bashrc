@@ -222,8 +222,9 @@ alias ack="ack-grep --pager=\"less -R\""
 ##############################
 
 
-# Simple script to quickly update all git repos in the current directory
-function updateGitRepos() {
+# Simple script to quickly update all git and svn repos in the current directory
+function updateRepos() {
+  # Update Git Repos
   for i in `find . -name \.git | awk -F "/" '{print $2}'`; do
     echo "cd $i"
     cd $i
@@ -236,6 +237,16 @@ function updateGitRepos() {
       echo "git pull"
       git pull
     fi
+    echo "cd .."
+    cd ..
+    echo "Done"
+  done
+  # Update SVN Repos
+  for i in `find ./* -name \.svn | awk -F "/" '{print $2}'`; do
+    echo "cd $i"
+    cd $i
+    echo "svn update"
+    svn update
     echo "cd .."
     cd ..
     echo "Done"
