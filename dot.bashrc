@@ -199,8 +199,9 @@ alias less='less -R'
 # Remove color codes (special characters) with sed
 alias nocolor='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
-# Activate a virthualenv environment
-alias activate='source ./.virthualenv/bin/activate'
+# Activate a hsenv environment
+# Parallel to using deactivate_hsenv
+alias activate_hsenv='source ./.hsenv/bin/activate'
 
 # List all Haskell packages which can be upgraded
 alias cabalupgrades="cabal list --installed | egrep -iv '(synopsis|homepage|license)'"
