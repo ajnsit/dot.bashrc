@@ -216,6 +216,13 @@ alias spider="wget -r -np -p -k"
 # Ack should always use a pager
 alias ack="ack-grep --pager=\"less -R\""
 
+# Quickly go up a directory - upto 6 levels up
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
 
 
 ##############################
@@ -398,6 +405,24 @@ function ghc-pkg-reset() {
 }
 
 
+###################################
+##==--~~ FASD  INTEGRATION ~~--==##
+###################################
+
+# From - https://github.com/clvv/fasd
+# Requires the fasd script to be in the path
+
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+
+# Some useful aliases
+alias v='f -e vim'      # quick opening files with vim
+alias m='f -e vlc'      # quick opening files with vlc
+alias o='a -e xdg-open' # quick opening files with xdg-open
 
 
 ###################################
