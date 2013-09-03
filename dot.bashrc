@@ -229,6 +229,16 @@ alias .......="cd ../../../../../.."
 ##==--~~ MY FUNCTIONS ~~--==##
 ##############################
 
+# les = less + ls
+# If the arg is a dir then run ls
+# else display the file using less
+function les() {
+  if [ -d $1 ]; then
+    ls -al $1
+  else
+    less $1
+  fi
+}
 
 # Simple script to quickly update all git and svn repos in the current directory
 function updateRepos() {
