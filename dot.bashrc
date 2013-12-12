@@ -121,6 +121,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# In interactive shells, you cannot use ! inside strings
+#  because that triggers a csh-style history expansion.
+#  The most common place where I run into this is in git commit messages
+#  where $ git commit -m "Fixed bug!"
+#  leads to the error - bash: !": event not found
+# To fix this, we disable histexpand which I never use annyways.
+set +o histexpand
 
 
 ###############################
