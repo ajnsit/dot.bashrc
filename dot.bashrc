@@ -221,7 +221,7 @@ alias ack="ack --pager=\"less -R\""
 alias spider="wget -r -np -p -k"
 
 # Ack should always use a pager
-alias ack="ack-grep --pager=\"less -R\""
+# alias ack="ack-grep --pager=\"less -R\""
 
 # Quickly go up a directory - upto 6 levels up
 alias ..="cd .."
