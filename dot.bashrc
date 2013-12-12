@@ -449,56 +449,6 @@ alias disablessh='sudo stop ssh && sudo mv /etc/init/ssh.conf /etc/init/ssh.conf
 ###################################
 ##==--~~ FANCY BASH PROMPT ~~--==##
 ###################################
-
-
-##############################################################################
-# Fancy BASH prompt that shows helpful git info
-        RED="\[\e[0;31m\]"
-     YELLOW="\[\e[0;33m\]"
-      GREEN="\[\e[0;32m\]"
-       BLUE="\[\e[0;34m\]"
-  LIGHT_RED="\[\e[1;31m\]"
-LIGHT_GREEN="\[\e[1;32m\]"
-      WHITE="\[\e[1;37m\]"
- LIGHT_GRAY="\[\e[0;37m\]"
-       CYAN="\[\e[0;36m\]"
- COLOR_NONE="\[\e[0m\]"
-
-function parse_git_branch {
-  git_status="$(git status 2> /dev/null)"
-  branch_pattern="^# On branch ([^${IFS}]*)"
-  remote_pattern="# Your branch is (.*) of"
-  diverge_pattern="# Your branch and (.*) have diverged"
-  if [[ ! ${git_status} =~ "working directory clean" ]]; then
-    state="${RED}⚡"
-  fi
-  if [[ ${git_status} =~ ${remote_pattern} ]]; then
-    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
-      remote="${YELLOW}↑"
-    else
-      remote="${YELLOW}↓"
-    fi
-  fi
-  if [[ ${git_status} =~ ${diverge_pattern} ]]; then
-    remote="${YELLOW}↕"
-  fi
-  if [[ ${git_status} =~ ${branch_pattern} ]]; then
-    branch=${BASH_REMATCH[1]}
-    echo " (${branch})${remote}${state}"
-  fi
-}
-
-function prompt_func() {
-    previous_return_value=$?;
-    prompt="${TITLEBAR}${BLUE}[${YELLOW}\w${GREEN}$(parse_git_branch)${BLUE}]${COLOR_NONE} "
-    if test $previous_return_value -eq 0; then
-        smiley="${GREEN}:)${COLOR_NONE} "
-    else
-        smiley="${RED}:|${COLOR_NONE} "
-    fi
-    next_line="\n${GREEN}\u${BLUE}@${GREEN}\h${BLUE}[${YELLOW}\j${BLUE}]${COLOR_NONE}➔ "
-    PS1="${smiley}${prompt}${COLOR_NONE}${next_line}"
-}
-
-PROMPT_COMMAND=prompt_func
+# Shows helpful git info
+. ~/.bash/vendor/git-prompt/git-prompt.sh
 
