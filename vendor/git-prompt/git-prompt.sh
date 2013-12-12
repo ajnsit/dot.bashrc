@@ -716,7 +716,7 @@ prompt_command_function() {
         cwd="$user_id_color[$dir_color$cwd$user_id_color]$colors_reset"
         procs="$user_id_color[$dir_color\j$user_id_color]$colors_reset "
 
-        PS1="$colors_reset$rc$head_local$cwd$dir_colors$tail_local\n$color_who_where$procs$prompt_char "
+        PS1="$colors_reset$rc$cwd $head_local$dir_colors$tail_local\n$color_who_where$procs$prompt_char "
 
         unset head_local tail_local pwd
  }
