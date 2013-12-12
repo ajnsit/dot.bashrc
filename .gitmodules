@@ -1,3 +1,0 @@
-[submodule "vendor/git-prompt"]
-	path = vendor/git-prompt
-	url = https://github.com/lvv/git-prompt.git
