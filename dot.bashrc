@@ -441,6 +441,10 @@ alias v='f -e vim'      # quick opening files with vim
 alias m='f -e vlc'      # quick opening files with vlc
 alias o='a -e xdg-open' # quick opening files with xdg-open
 
+# Enable/Disable openssh server
+alias enablessh='sudo mv /etc/init/ssh.conf.disabled /etc/init/ssh.conf && sudo start ssh'
+alias disablessh='sudo stop ssh && sudo mv /etc/init/ssh.conf /etc/init/ssh.conf.disabled'
+
 
 ###################################
 ##==--~~ FANCY BASH PROMPT ~~--==##
