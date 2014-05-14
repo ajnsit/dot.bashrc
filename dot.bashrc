@@ -219,6 +219,9 @@ alias cabalupgrades="cabal list --installed | egrep -iv '(synopsis|homepage|lice
 # Ack should always use a pager
 alias ack="ack --pager=\"less -R\""
 
+# Ag (a.k.a. the Silver Surfer) should always use a pager
+alias ag="ag --pager=\"less -R\""
+
 # Wget as a spider
 # See - http://blog.syntaxvssemantics.com/2010/08/wget-as-spidercrawler-recursively.html
 alias spider="wget -r -np -p -k"
