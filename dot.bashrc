@@ -427,6 +427,16 @@ function ghc-pkg-reset() {
         )
 }
 
+# Genie
+# Examples -
+#   genie where am i
+#   genie what is a corn dog
+function genie(){
+  query=`printf "%s+" $@`
+  result=`curl -s "https://weannie.pannous.com/api?out=simple&input=$query"`
+  echo $result
+  # say $result 2>/dev/null
+}
 
 
 # Enable/Disable openssh server
