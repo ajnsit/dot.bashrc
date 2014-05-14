@@ -138,6 +138,9 @@ set +o histexpand
 # Modified path
 export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 
+# Add android SDK to path
+export PATH=$HOME/progs/android-sdk-linux/platform-tools:$HOME/progs/android-sdk-linux/tools:$PATH
+
 # Set a 256 color terminal
 # Needed for vim and tmux
 if [ -n "$TMUX" ]; then
