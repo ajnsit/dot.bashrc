@@ -217,7 +217,7 @@ alias activate_hsenv='source ./.hsenv/bin/activate'
 alias cabalupgrades="cabal list --installed | egrep -iv '(synopsis|homepage|license)'"
 
 # Ack should always use a pager
-alias ack="ack --pager=\"less -R\""
+alias ack="ack-grep --pager=\"less -R\""
 
 # Ag (a.k.a. the Silver Surfer) should always use a pager
 alias ag="ag --pager=\"less -R\""
