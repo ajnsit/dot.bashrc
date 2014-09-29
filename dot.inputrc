@@ -1,0 +1,15 @@
+set completion-ignore-case On
+set editing-mode vi
+
+$if mode=vi
+  set keymap vi-command
+  "gg": beginning-of-history
+  "G": end-of-history
+  set keymap vi-insert
+  "jj": vi-movement-mode
+  "\C-p": dynamic-complete-history
+  # ^p check for partial match in history
+  "\C-l": clear-screen
+  # ^n cycle through the list of partial matches
+  "\C-n": menu-complete
+
