@@ -409,6 +409,18 @@ function grepcr() {
   unset a
 }
 
+# Function to move a kt files from java to kotlin folder
+function mvj2k() {
+  unset a
+  if [ $# -gt 0 ]; then
+    a=$1
+    echo "find . -name ${a}.kt | sed -e \"p;s/java/kotlin/\" | xargs -n2 mv"
+    echo "mv <from> <to>"
+    find . -name ${a}.kt | sed -e "p;s/java/kotlin/" | xargs -n2 echo
+    find . -name ${a}.kt | sed -e "p;s/java/kotlin/" | xargs -n2 mv
+  fi
+}
+
 ##############################################################################
 # unregister broken GHC packages. Run this a few times to resolve dependency rot in installed packages.
 # ghc-pkg-clean -f cabal/dev/packages*.conf also works.
