@@ -154,6 +154,18 @@ else
   export TERM=xterm-256color
 fi
 
+# I am unable to start emacs on elementary OS Freya without this flag.
+# ERROR MESSAGE IS -
+#   X protocol error: BadMatch (invalid parameter attributes) on protocol request 139
+#   When compiled with GTK, Emacs cannot recover from X disconnects.
+#   This is a GTK bug: https://bugzilla.gnome.org/show_bug.cgi?id=85715
+#   For details, see etc/PROBLEMS.
+# THIS GUY HAS SAME PROBLEM BUT NO RESPONSES
+# http://askubuntu.com/questions/610340/cannot-open-emacs
+# THIS IS THE BUG (OPEN SINCE 2002!!!)
+# https://bugzilla.gnome.org/show_bug.cgi?id=85715
+export XLIB_SKIP_ARGB_VISUALS=1
+
 
 ##################################
 ##==--~~ VIM MODE IN BASH ~~--==##
