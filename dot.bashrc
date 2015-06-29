@@ -184,7 +184,7 @@ esac
 #  The most common place where I run into this is in git commit messages
 #  where $ git commit -m "Fixed bug!"
 #  leads to the error - bash: !": event not found
-# To fix this, we disable histexpand which I never use annyways.
+# To fix this, we disable histexpand which I never use anyways.
 set +o histexpand
 
 
