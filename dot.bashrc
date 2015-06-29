@@ -210,6 +210,9 @@ else
   export TERM=xterm-256color
 fi
 
+# Java Home
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+
 # I am unable to start emacs on elementary OS Freya without this flag.
 # ERROR MESSAGE IS -
 #   X protocol error: BadMatch (invalid parameter attributes) on protocol request 139
