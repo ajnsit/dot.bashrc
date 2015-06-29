@@ -195,7 +195,10 @@ set +o histexpand
 
 # Modified path
 # Added Haskell PPA paths
-export PATH=$HOME/bin:./.cabal-sandbox/bin:$HOME/.cabal/bin:/opt/ghc/7.8.3/bin:/opt/alex/3.1.3/bin:/opt/happy/1.19.4/bin:/opt/cabal/1.20/bin:$PATH
+# Added Emacs (home compiled) path
+# Added Haskell Stack executables path (~/.local/bin)
+# Downgraded to cabal-v1.20 - See https://github.com/kazu-yamamoto/ghc-mod/wiki/InconsistentCabalVersions#ghc--710-1
+export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.cabal/bin:/opt/ghc/7.8.4/bin:$HOME/.cabal/bin:/opt/ghc/7.10.2/bin:/opt/alex/3.1.4/bin:/opt/happy/1.19.5/bin:/opt/cabal/1.20/bin:/opt/emacs/bin:$PATH
 
 # Add android SDK to path
 export PATH=$HOME/progs/android-sdk-linux/platform-tools:$HOME/progs/android-sdk-linux/tools:$PATH
