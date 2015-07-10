@@ -198,7 +198,7 @@ set +o histexpand
 # Added Emacs (home compiled) path
 # Added Haskell Stack executables path (~/.local/bin)
 # Downgraded to cabal-v1.20 - See https://github.com/kazu-yamamoto/ghc-mod/wiki/InconsistentCabalVersions#ghc--710-1
-export PATH=$HOME/.local/bin:$HOME/.cabal/bin:/opt/ghc/7.8.4/bin:$HOME/.cabal/bin:/opt/ghc/7.10.2/bin:/opt/alex/3.1.4/bin:/opt/happy/1.19.5/bin:/opt/cabal/1.20/bin:/opt/emacs/bin:$HOME/progs/android/sdk/platform-tools:$HOME/progs/android/sdk/tools:$PATH
+export PATH=$HOME/.local/bin:$HOME/.cabal/bin:/opt/ghc/7.8.4/bin:/opt/ghc/7.10.2/bin:/opt/alex/3.1.4/bin:/opt/happy/1.19.5/bin:/opt/cabal/1.20/bin:/opt/emacs/bin:$HOME/progs/android/sdk/platform-tools:$HOME/progs/android/sdk/tools:$PATH
 
 # Set a 256 color terminal
 # Needed for vim and tmux
