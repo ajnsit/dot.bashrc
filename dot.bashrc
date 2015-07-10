@@ -269,7 +269,7 @@ alias pp='python -mjson.tool'
 # Generate ctags for haskell code using the inbuilt features in recent ghcs
 # Earlier this was done through the hasktags executable
 # Usage: hasktags Main.hs
-alias hasktags='ghc -e :ctags'
+# alias hasktags='ghc -e :ctags'
 
 # Haskell projects - When using cabal, use stack package db directories
 # Also see my comment here - https://www.reddit.com/r/haskell/comments/3bw95a/using_cabal_and_stack_together/csqdbe2
