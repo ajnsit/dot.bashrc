@@ -219,9 +219,11 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 #   This is a GTK bug: https://bugzilla.gnome.org/show_bug.cgi?id=85715
 #   For details, see etc/PROBLEMS.
 # THIS GUY HAS SAME PROBLEM BUT NO RESPONSES
-# http://askubuntu.com/questions/610340/cannot-open-emacs
+#   http://askubuntu.com/questions/610340/cannot-open-emacs
 # THIS IS THE BUG (OPEN SINCE 2002!!!)
-# https://bugzilla.gnome.org/show_bug.cgi?id=85715
+#   https://bugzilla.gnome.org/show_bug.cgi?id=85715
+# UPDATE: ADDED THIS TO /usr/share/applications/emacs.desktop as well
+#   Exec=env XLIB_SKIP_ARGB_VISUALS=1 emacs %F
 export XLIB_SKIP_ARGB_VISUALS=1
 
 
