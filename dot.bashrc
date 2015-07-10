@@ -271,6 +271,10 @@ alias pp='python -mjson.tool'
 # Usage: hasktags Main.hs
 alias hasktags='ghc -e :ctags'
 
+# Haskell projects - When using cabal, use stack package db directories
+# Also see my comment here - https://www.reddit.com/r/haskell/comments/3bw95a/using_cabal_and_stack_together/csqdbe2
+alias cblconf='echo "cabal configure --package-db=clear --package-db=global --package-db=$(stack path --snapshot-pkg-db) --package-db=$(stack path --local-pkg-db)"; cabal configure --package-db=clear --package-db=global --package-db=$(stack path --snapshot-pkg-db) --package-db=$(stack path --local-pkg-db)'
+
 # Command to start a simple ad-hoc webserver in the current directory
 # Great for testing out stuff that cannot be run from file:// urls due to browser security restrictions
 alias server='python -m SimpleHTTPServer'
