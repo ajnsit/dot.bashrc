@@ -359,63 +359,6 @@ function updateRepos() {
   done
 }
 
-# Simple function to run FAY compiler and the other needed operations
-# This function does the following -
-#   - Run GHC for typechecking
-#   - Run Fay for actual compilation to JS
-#   - Also generate a beautified file by running jsbeautify
-#   - Remove temporary files
-#
-# TODO: This function is kind of ugly. Fix!
-function fayme() {
-  unset noerror; unset hsfilename; unset jsfilename; unset tempfilename; unset dirname; unset extension; unset filename
-
-  noerror=0
-  while [ 1 ]; do
-    if [ $# -gt 0 ]; then
-      hsfilename=$1
-      extension="${hsfilename##*.}"
-      # if filename == extension then there IS NO extension
-      if [ $extension == $hsfilename ]; then
-        extension="hs"
-        hsfilename="${hsfilename}.hs"
-      fi
-      if [ -e $hsfilename ]; then
-        if [ $extension == "hs" ]; then
-          dirname=$(dirname $hsfilename)
-          filename="${hsfilename%.*}"
-          jsfilename="${filename}.js"
-          tempfilename="${filename}BAK.js"
-          echo "Running GHC"
-          ghc $hsfilename || break
-          echo "Running Fay"
-          fay --autorun $hsfilename || break
-          echo "Un-minifying js"
-          mv $jsfilename $tempfilename || break
-          js_beautify $tempfilename > $jsfilename || break
-          echo "Cleaning up"
-          if [ -z $dirname ]; then
-            dirname="."
-          fi
-          rm $dirname/*.o $dirname/*.hi $tempfilename || break
-          noerror=1
-        fi
-      fi
-    fi
-    # Only execute loop once
-    break
-  done
-
-  if [ $noerror -eq 0 ]; then
-    echo "fayme: Run Fay compiler and other needed operations on a Haskell source file"
-    echo "Usage: fayme filename"
-    echo "  where filename = path/to/Foo.hs"
-    echo "     OR filename = path/to/Foo"
-  fi
-
-  unset noerror; unset hsfilename; unset jsfilename; unset tempfilename; unset dirname; unset extension; unset filename
-}
-
 # Replace strings across files
 # Internally uses perl -pi -e
 # Usage:
