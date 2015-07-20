@@ -537,3 +537,7 @@ alias disablessh='sudo stop ssh && sudo mv /etc/init/ssh.conf /etc/init/ssh.conf
 # Shows helpful git info
 . ~/.bash/vendor/git-prompt/git-prompt.sh
 
+###################################
+##==--~~ MY PRIVATE CONFIG ~~--==##
+###################################
+. ~/.bash/private.bash.config.sh
