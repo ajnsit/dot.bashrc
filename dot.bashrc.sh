@@ -284,13 +284,6 @@ alias less='less -R'
 # Remove color codes (special characters) with sed
 alias nocolor='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"'
 
-# Activate a hsenv environment
-# Parallel to using deactivate_hsenv
-alias activate_hsenv='source ./.hsenv/bin/activate'
-
-# List all Haskell packages which can be upgraded
-alias cabalupgrades="cabal list --installed | egrep -iv '(synopsis|homepage|license)'"
-
 # Ack should always use a pager
 alias ack="ack-grep --pager=\"less -R\""
 
@@ -301,9 +294,6 @@ alias ag="ag --pager=\"less -R\""
 # See - http://blog.syntaxvssemantics.com/2010/08/wget-as-spidercrawler-recursively.html
 alias spider="wget -r -np -p -k"
 
-# Ack should always use a pager
-# alias ack="ack-grep --pager=\"less -R\""
-
 # Quickly go up a directory - upto 6 levels up
 alias ..="cd .."
 alias ...="cd ../.."
@@ -311,6 +301,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
+
+# Enable/Disable openssh server
+alias enablessh='sudo mv /etc/init/ssh.conf.disabled /etc/init/ssh.conf && sudo start ssh'
+alias disablessh='sudo stop ssh && sudo mv /etc/init/ssh.conf /etc/init/ssh.conf.disabled'
 
 
 ##############################
@@ -374,7 +368,6 @@ function searchReplace() {
   fi
 }
 
-
 # Bunch of functions to quickly rename multiple files
 # By either replacing a prefix or suffix pattern
 # You specify the filename pattern in the following way
@@ -406,34 +399,17 @@ function renameSuffix() {
   fi
 }
 
-# A wrapper over grep to perform a nested search for a phrase in the current dir
-function grepcr() {
-  unset a
-  if [ $# -gt 0 ]; then
-    a=$1
-    shift
-  fi
-  sp=" "
-  while [ $# -gt 0 ]; do
-    a=$a$sp$1
-    shift
-  done
-  echo "grep --color=always -ri \"$a\" . | less -R"
-  grep -ri --color=always "$a" . | less -R
-  unset a
+# Genie
+# Examples -
+#   genie where am i
+#   genie what is a corn dog
+function genie() {
+    query=`printf "%s+" $@`
+    result=`curl -s "https://weannie.pannous.com/api?out=simple&input=$query"`
+    echo $result
+    # say $result 2>/dev/null
 }
 
-# Function to move a kt files from java to kotlin folder
-function mvj2k() {
-  unset a
-  if [ $# -gt 0 ]; then
-    a=$1
-    echo "find . -name ${a}.kt | sed -e \"p;s/java/kotlin/\" | xargs -n2 mv"
-    echo "mv <from> <to>"
-    find . -name ${a}.kt | sed -e "p;s/java/kotlin/" | xargs -n2 echo
-    find . -name ${a}.kt | sed -e "p;s/java/kotlin/" | xargs -n2 mv
-  fi
-}
 
 ##############################################################################
 # unregister broken GHC packages. Run this a few times to resolve dependency rot in installed packages.
@@ -457,28 +433,13 @@ function ghc-pkg-reset() {
         )
 }
 
-# Genie
-# Examples -
-#   genie where am i
-#   genie what is a corn dog
-function genie(){
-  query=`printf "%s+" $@`
-  result=`curl -s "https://weannie.pannous.com/api?out=simple&input=$query"`
-  echo $result
-  # say $result 2>/dev/null
-}
-
-
-# Enable/Disable openssh server
-alias enablessh='sudo mv /etc/init/ssh.conf.disabled /etc/init/ssh.conf && sudo start ssh'
-alias disablessh='sudo stop ssh && sudo mv /etc/init/ssh.conf /etc/init/ssh.conf.disabled'
-
 
 ###################################
 ##==--~~ FANCY BASH PROMPT ~~--==##
 ###################################
 # Shows helpful git info
 . ~/.bash/vendor/git-prompt/git-prompt.sh
+
 
 ###################################
 ##==--~~ MY PRIVATE CONFIG ~~--==##
