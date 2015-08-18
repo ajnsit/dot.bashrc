@@ -203,6 +203,16 @@ export PATH=$HOME/.local/bin:$HOME/.cabal/bin:/opt/ghc/7.10.2/bin:/opt/ghc/7.8.4
 # Corresponding to elm npm install - https://www.npmjs.com/package/elm
 export ELM_HOME=/usr/lib/node_modules/elm/share
 
+# Add cabal path
+# Note that when using ghc-7.8 -
+#   ghc-mod cannot work cabal-1.22+
+#    See https://github.com/kazu-yamamoto/ghc-mod/wiki/InconsistentCabalVersions#ghc--710-1
+#   whereas ghcjs requires cabal-1.22+
+# Currently I need ghcjs so I've upgraded to cabal 1.22
+# If you need ghc-mod, downgrade cabal to 1.20
+# export PATH=/opt/cabal/1.18/bin:$PATH
+# export PATH=/opt/cabal/1.20/bin:$PATH
+export PATH=/opt/cabal/1.22/bin:$PATH
 
 # Set a 256 color terminal
 # Needed for vim and tmux
