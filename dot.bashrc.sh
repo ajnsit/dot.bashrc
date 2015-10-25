@@ -424,6 +424,9 @@ function genie() {
     # say $result 2>/dev/null
 }
 
+##############################################################################
+# Enable bash completion with stack (the haskell tool)
+eval "$(stack --bash-completion-script "$(which stack)")"
 
 ##############################################################################
 # unregister broken GHC packages. Run this a few times to resolve dependency rot in installed packages.
