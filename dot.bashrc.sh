@@ -325,6 +325,12 @@ alias disablessh='sudo stop ssh && sudo mv /etc/init/ssh.conf /etc/init/ssh.conf
 ##==--~~ MY FUNCTIONS ~~--==##
 ##############################
 
+# Check which apt-get package installed this file
+function whoinstalled() {
+  echo "grep -l $1 /var/lib/dpkg/info/*.list"
+  grep -l $1 /var/lib/dpkg/info/*.list
+}
+
 # les = less + ls
 # If the arg is a dir then run ls
 # else display the file using less
